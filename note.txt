@@ -1,0 +1,9 @@
+docker exec -it nomContainer bash
+docker compose up -d
+
+GET amazon.com/?search=Iphone+13+Pro {adress, rue...}
+
+PUT/UPDATE or PATCH amazon.com/user/2339768
+
+DELETE amazon.com/user/2339768/address/ {4567}
+

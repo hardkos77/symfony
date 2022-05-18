@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductEntity index{% endblock %}
+
+{% block body %}
+    <h1>ProductEntity index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>Deleted_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_entity in product_entities %}
+            <tr>
+                <td>{{ product_entity.id }}</td>
+                <td>{{ product_entity.name }}</td>
+                <td>{{ product_entity.description }}</td>
+                <td>{{ product_entity.price }}</td>
+                <td>{{ product_entity.createdAt ? product_entity.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ product_entity.updatedAt ? product_entity.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ product_entity.deletedAt ? product_entity.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_product_entity_show', {'id': product_entity.id}) }}">show</a>
+                    <a href="{{ path('app_product_entity_edit', {'id': product_entity.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_entity_new') }}">Create new</a>
+{% endblock %}
